@@ -94,6 +94,7 @@ public class Controller extends HttpServlet {
                 break;
                 //TODO: Terug naar login pagina sturen en zorgen dat gebruiker opnieuw kan inloggen
             }
+            
             default:
                 break;
         }
