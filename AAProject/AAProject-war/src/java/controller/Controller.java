@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -28,6 +29,10 @@ public class Controller extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
+    @Override
+    public void init() {
+    }
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -45,7 +50,7 @@ public class Controller extends HttpServlet {
         }
     }
     
-    private void gotoPage(String jsp, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    private void goToPage(String jsp, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher view = request.getRequestDispatcher(jsp);
         view.forward(request, response);
     }
@@ -76,7 +81,22 @@ public class Controller extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        HttpSession session = request.getSession();
+        
+        switch((String) request.getParameter("vanWaar")) {
+            case "login":
+            {
+                goToPage("", request, response);
+            }
+            case "afmelden":
+            {
+                session.invalidate();
+                break;
+                //TODO: Terug naar login pagina sturen en zorgen dat gebruiker opnieuw kan inloggen
+            }
+            default:
+                break;
+        }
     }
 
     /**
