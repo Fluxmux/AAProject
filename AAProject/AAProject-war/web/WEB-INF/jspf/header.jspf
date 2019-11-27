@@ -2,5 +2,5 @@
 <%@ page pageEncoding="UTF-8" %>
 
 <div class="header">
-    Hier komt de header
+   <img src="logo.jpg" alt="een verschrikkelijk mooi logo" width="15%" heigth="15%">
 </div>
