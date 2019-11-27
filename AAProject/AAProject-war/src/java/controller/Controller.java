@@ -83,22 +83,31 @@ public class Controller extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         
-        switch((String) request.getParameter("vanWaar")) {
-            case "login":
-            {
-                goToPage("", request, response);
-            }
+        switch((String) request.getParameter("submit")) {
+      
+            case "extern":
+               goToPage("overzichtExtern.jsp", request, response); break;
+            case "student":
+               goToPage("overzichtStudent.jsp", request, response); break;
+            case "docent":
+                goToPage("overzichtDocent.jsp", request, response); break;
             case "afmelden":
-            {
-                session.invalidate();
-                break;
+                session.invalidate(); break;
+            case "home":
+                goToPage("index.jsp", request, response); break;
                 //TODO: Terug naar login pagina sturen en zorgen dat gebruiker opnieuw kan inloggen
-            }
-            
-            default:
-                break;
         }
+         processRequest(request, response);
     }
+    
+     public void gotoPage(String naam, HttpServletRequest request, 
+                            HttpServletResponse response) 
+            throws ServletException, IOException{
+        RequestDispatcher view = 
+                request.getRequestDispatcher(naam);
+        view.forward(request, response);
+    }
+
 
     /**
      * Returns a short description of the servlet.

@@ -14,5 +14,8 @@
     <body>
         <%@ include file="WEB-INF/jspf/header.jspf"%>
         <h1>Welkom, kies uw machine</h1>
+        <form method = "post" action ="ControllerURL"/> 
+            <input type="submit" name="submit" value="home"/>
+        </form>
     </body>
 </html>

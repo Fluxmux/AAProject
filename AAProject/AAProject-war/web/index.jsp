@@ -20,12 +20,13 @@
             <p>Welkom op onze site, indien u een overzicht van de beschikbare
                 machines wilt bekijken, druk op de juiste knop</p>
         </div>
-        <div>
-            <p>Wie ben je?</p>
-            <p><a href="overzichtExtern.jsp">Externen</a></p>
-            <p><a href="overzichtStudent.jsp">Studenten</a></p>
-            <p><a href="overzichtDocent.jsp">Docenten</a></p>
-        </div>
+        <p>Vertel eens, wie ben je?</p>
+        <form method = "post" action ="ControllerURL"/> 
+            <input type="submit" name="submit" value="extern"/>
+            <input type="submit" name ="submit" value="student"/>
+            <input type ="submit" name="submit" value="docent"/>     
+        </form>
+ 
         <jsp:include page="footer.jsp"/>
     </body>
 </html>
